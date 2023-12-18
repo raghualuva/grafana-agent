@@ -1,0 +1,31 @@
+# metrics:
+#   wal_directory: /tmp/wal
+#   global:
+#     scrape_interval: 60s
+#     remote_write:
+#     - url:
+#       basic_auth:
+#         username:
+#         password:
+
+# integrations:
+#   agent:
+#     enabled: true
+
+server:
+  log_level: info
+
+metrics:
+  global:
+    scrape_interval: 1m
+  configs:
+    - name: agent
+      scrape_configs:
+        - job_name: agent
+          static_configs:
+            - targets: ['127.0.0.1:12345']
+      remote_write:
+      - url:
+        basic_auth:
+          username:
+          password:
